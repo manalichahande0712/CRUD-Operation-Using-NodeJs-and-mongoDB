@@ -1,7 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const Student = require('../model/student');
+const Marks = require('../model/marks')
 const mongoose = require('mongoose');
+
+// router.get('/greater',async(req,res,next) =>{
+//     Student.aggregate([{$group : {_id: "$fname"}} , {$sort : {_id : -1}}])
+//     .then((result) => {
+//         res.status(200).json({
+//             message:'Student Marks greather than 30',
+//             result
+//         });
+//         })
+//         .catch((error) => {
+//         console.log(error);
+//         });
+// })
+
+// router.get('/greater',async(req,res,next) =>{
+//     Student.aggregate([{$match : {age: {$gt : 10}}} , {$project : {_id : 1, fname : 1, lname :1, student_marks :1}}])
+//     .then((result) => {
+//         res.status(200).json({
+//             message:'Student Marks greather than 30',
+//             result
+//         });
+//         })
+//         .catch((error) => {
+//         console.log(error);
+//         });
+// })
+
 
 // get request
 router.get('/',(req,res,next)=>{
@@ -44,7 +72,8 @@ router.post('/',(req,res,next)=>{
        lname:req.body.lname,
        roll_no:req.body.roll_no,
        age:req.body.age,
-       study:req.body.study
+       study:req.body.study,
+       student_marks:req.body.student_marks
 
    })
    student.save()
@@ -87,7 +116,8 @@ Student.findOneAndUpdate({_id:req.params.id},{
        lname:req.body.lname,
        roll_no:req.body.roll_no,
        age:req.body.age,
-       study:req.body.study 
+       study:req.body.study,
+       student_marks:req.body.student_marks
     }
 })
 .then(result=>{

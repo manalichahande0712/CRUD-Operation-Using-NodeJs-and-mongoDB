@@ -6,7 +6,8 @@ const studentSchema = new mongoose.Schema({
     lname:String,
     roll_no:String,
     age:Number,
-    study:String
+    study:String,
+    student_marks:Number
 })
 
 module.exports = mongoose.model('Student', studentSchema)
